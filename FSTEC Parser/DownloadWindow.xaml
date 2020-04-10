@@ -1,0 +1,46 @@
+﻿<Window x:Class="FSTEC_Parser.DownloadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FSTEC_Parser"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" Height="150" Width="450" ResizeMode="NoResize" Title="FSTEC Parser" FontFamily="Century Gothic" Background="#FF292B2F" Icon="FSTEC Parser.ico" Foreground="White">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="DefaultButton">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Background" Value="#5A8671" />
+            <Setter Property="Foreground" Value="White" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="MyContentPresenter" 
+                                              Content="{TemplateBinding Content}"
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#181C1A"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#287F46"/>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,1,0">
+        <ProgressBar x:Name="ProgressBar" Margin="10,83,10,0"  Visibility="Hidden" Height="19" VerticalAlignment="Top"/>
+        <Label Content="Скачать базу данных с сайта БДУ ФСТЭК?" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Foreground="White"/>
+        <Button x:Name="ButtonConfirm" Content="ДА" Style="{StaticResource DefaultButton}"  Margin="10,40,0,0"  Click="ButtonConfirm_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="182" Height="38" BorderThickness="0" FontSize="13" />
+        <Button x:Name="ButtonRefuse" Content="НЕТ" Style="{StaticResource DefaultButton}" Margin="0,40,10,0"  Click="ButtonRefuse_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="182" Height="38" BorderThickness="0" FontSize="13" />
+    </Grid>
+</Window>
